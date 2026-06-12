@@ -1,0 +1,129 @@
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    vertical-align: middle;
+    border-top: 4px solid white;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.source{
+    background: url(../assets/icons/source.svg);
+}
+.target{
+    background: url(../assets/icons/target.svg);
+}
+/* .visited{
+    background-color: rgba(0, 195, 255, 0.85);
+}
+.path{
+    background-color: rgb(255, 254, 106);
+} */
+.unvisited{
+    background-color: white;
+    border: 1px solid var(--light-line);
+
+}
+.wall{
+    background-color: rgb(12, 53, 71);
+}
+
+
+@keyframes wallAnimation {
+    0% {
+        transform: scale(0.3);
+        /* Starts as a dark blue, tiny circle */
+        background-color: rgb(12, 53, 71);
+        border-radius: 100%; 
+    }
+    50% {
+        /* Transitions to medium blue */
+        background-color: rgb(12, 53, 71);
+    }
+    75% {
+        transform: scale(1.2); /* Pops out slightly larger than the cell */
+        /* Transitions to a teal color */
+        background-color: rgb(12, 53, 71);
+    }
+    100% {
+        transform: scale(1);
+        /* Settles into a bright cyan square */
+        background-color: rgb(12, 53, 71); 
+        border-radius: 0; 
+    }
+}
+
+.icon{
+    aspect-ratio: 1;
+    width: 20px;
+}
+
+/* ===================================================
+   1. THE VISITED NODE ANIMATION
+   =================================================== */
+
+.visited {
+    /* We don't set a hard background color here anymore. 
+       The animation handles the colors! */
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s; /* How long the pop takes */
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; /* Keeps the final state when done */
+}
+
+ @keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        /* Starts as a dark blue, tiny circle */
+        background-color: rgba(0, 0, 66, 0.75);
+        border-radius: 100%; 
+    }
+    50% {
+        /* Transitions to medium blue */
+        background-color: rgba(17, 104, 217, 0.75);
+    }
+    75% {
+        transform: scale(1.2); /* Pops out slightly larger than the cell */
+        /* Transitions to a teal color */
+        background-color: rgba(0, 217, 159, 0.75);
+    }
+    100% {
+        transform: scale(1);
+        /* Settles into a bright cyan square */
+        background-color: rgba(0, 190, 218, 0.75); 
+        border-radius: 0; 
+    }
+}
+
+/* ===================================================
+   2. THE FINAL PATH ANIMATION
+   =================================================== */
+
+.path {
+    animation-name: shortestPath;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shortestPath {
+    0% {
+        transform: scale(0.6);
+        background-color: rgb(255, 254, 106);
+        border-radius: 100%;
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: rgb(255, 254, 106);
+    }
+    100% {
+        transform: scale(1);
+        background-color: rgb(255, 254, 106);
+        border-radius: 0;
+    }
+}
+.visited{
+    border: 0.5px var(--light-line);
+    border-style: solid ;
+}
